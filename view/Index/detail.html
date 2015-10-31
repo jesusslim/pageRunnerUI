@@ -1,0 +1,53 @@
+{{template "Index/header.html" .}}
+<style type="text/css">
+	.table tr th{
+		font-size:12px !important;
+	}
+	.table tr td{
+		font-size:12px !important;
+	}
+</style>
+<div class="panel">
+	<div class="panel-heading">
+		Detail
+	</div>
+	<div class="panel-body" id="pn">
+		<table class="table">
+			<tr>
+				<th>模块</th>
+				<th>控制器</th>
+				<th>Action</th>
+				<th>请求Url</th>
+				<th>到达Url</th>
+				<th>耗时(ms)</th>
+				<th>Http状态码</th>
+				<th>是否错误1是</th>
+				<th>错误信息</th>
+				<th>访问次数</th>
+			</tr>
+			{{range .list}}
+			<tr>
+				<td>{{.module}}</td>
+				<td>{{.controller}}</td>
+				<td>{{.action}}</td>
+				<td>{{.url}}</td>
+				<td>{{.last_url}}</td>
+				<td>{{.duration}}</td>
+				<td>{{.status}}</td>
+				<td>{{.is_err}}</td>
+				<td>{{.err}}</td>
+				<td>{{.times}}</td>
+			</tr>
+			{{end}}
+		</table>
+		<div id="slimpage"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		SlimPage.init("#pn",{{.page.page}},{{.page.pagesize}},{{.page.pages}});
+		SlimPage.Params.task_id = '{{.task_id}}';
+		SlimPage.showPage();
+	});
+</script>
+{{template "Index/footer.html" .}}

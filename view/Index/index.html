@@ -1,0 +1,36 @@
+{{template "Index/header.html" .}}
+<div class="panel">
+	<div class="panel-heading">
+		Tasks
+	</div>
+	<div class="panel-body" id="pn">
+		<table class="table">
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>开始时间</th>
+				<th>总链接数</th>
+				<th>完成链接数</th>
+				<th>详情</th>
+			</tr>
+			{{range .task}}
+			<tr>
+				<td>{{.id}}</td>
+				<td>{{.title}}</td>
+				<td>{{DateStr .create_time "Y-m-d H:i:s"}}</td>
+				<td>{{.num}}</td>
+				<td>{{.success}}</td>
+				<td><a href="detail?task_id={{.id}}">详情</a></td>
+			</tr>
+			{{end}}
+		</table>
+		<div id="slimpage"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		SlimPage.init("#pn",{{.page.page}},{{.page.pagesize}},{{.page.pages}});
+		SlimPage.showPage();
+	});
+</script>
+{{template "Index/footer.html" .}}

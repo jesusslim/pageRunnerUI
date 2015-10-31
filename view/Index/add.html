@@ -1,0 +1,40 @@
+{{template "Index/header.html" .}}
+<div class="panel">
+	<div class="panel-heading">
+		New Task
+	</div>
+	<div class="panel-body" id="pn">
+		<form role="form" method="post" action="insert">
+			<div class="form-group">
+				<label>扫描目录</label>
+				<input name="path" class="form-control" value="{{.example.file}}">
+				<p class="help-block">Example:{{.example.file}}</p>
+			</div>
+			<div class="form-group">
+				<label>网站地址</label>
+				<input name="url" class="form-control" value="{{.example.url}}">
+				<p class="help-block">Example:{{.example.url}}</p>
+			</div>
+			<div class="form-group">
+				<label>测试模块</label>
+				<input name="module" class="form-control" value="All">
+				<p class="help-block">Example:All--全部 Student、Web等</p>
+			</div>
+			<div class="form-group">
+				<label>最大并发数</label>
+				<input name="pool" class="form-control" value="{{.example.pool}}">
+				<p class="help-block">Example:{{.example.pool}}</p>
+			</div>
+			<div class="form-group">
+				<label>Cookie</label>
+				<input name="cookie" class="form-control" value="{{.example.cookie}}">
+				<p class="help-block">Example:{{.example.cookie}}</p>
+			</div>
+			<button type="submit" class="btn btn-primary">执行</button>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	
+</script>
+{{template "Index/footer.html" .}}
